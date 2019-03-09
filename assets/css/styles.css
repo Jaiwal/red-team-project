@@ -1,0 +1,11 @@
+body {
+    background: aquamarine;
+
+}
+
+.jumbotron {
+    background-image: url(../images/beachfront.jpeg);
+    background-size: cover;
+    padding: 20% 10%;
+    margin: 1em .5em;   
+}
