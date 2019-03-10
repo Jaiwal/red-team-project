@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+
+    <!-- Reference to the Bing Maps SDK -->
+    <script type='text/javascript'
+        src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Ao5GBZzTBhN_P14V5wnkRm5gX7oxMjW47tpMlDtE_qVc16qRn7ElPOlM3IxfzPQM'
+        async defer></script>
+
+    <script type='text/javascript'>
+        function GetMap() {
+            let mylocation;
+            navigator.geolocation.getCurrentPosition(e => {
+                mylocation = new Microsoft.Maps.Location(e.coords.latitude, e.coords.longitude);
+                var map = new Microsoft.Maps.Map('#myMap', {
+                    credentials: 'Ao5GBZzTBhN_P14V5wnkRm5gX7oxMjW47tpMlDtE_qVc16qRn7ElPOlM3IxfzPQM',
+                    center: mylocation
+                });
+                let pin = new Microsoft.Maps.Pushpin(mylocation, {title: 'You are Here'})
+                map.entities.push(pin);
+            })
+
+
+            //Add your post map load code here.
+
+        }
+    </script>
+</head>
+
+<body>
+    <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
+</body>
+
+</html>
