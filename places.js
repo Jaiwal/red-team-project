@@ -22,7 +22,7 @@ const search = query => {
             let ll = response.resourceSets[0].resources[0].geocodePoints[0].coordinates.toString().replace(',', '%2C');
             getPlaces(ll).then(response => {//replace with call to updated places UI
                 response.response.groups[0].items.forEach(e => {
-                    $('#stuff').append(`<div><a href="https://www.google.com/maps/search/?api=1&query=${e.venue.location.lat + '%2C' + e.venue.location.lng}" target="_blank">${e.venue.name}</a><img src="${e.venue.categories[0].icon.prefix + '64' + e.venue.categories[0].icon.suffix}" alt="Photo of ${e.venue.name}"/></div>`)
+                    $('#stuff').append(`<div><a href="https://www.google.com/maps/search/?api=1&query=${e.venue.location.lat + '%2C' + e.venue.location.lng}" target="_blank">${e.venue.name}</a><img src="${e.venue.categories[0].icon.prefix + '32' + e.venue.categories[0].icon.suffix}" alt="Photo of ${e.venue.name}"/></div>`)
                 })
             })
         } catch {
@@ -45,3 +45,5 @@ $('#locate').on('click', function () {
     });
     
 })
+
+//https://dev.virtualearth.net/REST/v1/Imagery/Map/imagerySet/centerPoint/zoomLevel?mapSize={mapSize}&pushpin={pushpin}&mapLayer={mapLayer}&format={format}&mapMetadata={mapMetadata}&key={BingMapsAPIKey}
