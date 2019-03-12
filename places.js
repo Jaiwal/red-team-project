@@ -20,20 +20,47 @@ const getMap = ll => {
     map = new Microsoft.Maps.Map('#map', {
         credentials: 'Ao5GBZzTBhN_P14V5wnkRm5gX7oxMjW47tpMlDtE_qVc16qRn7ElPOlM3IxfzPQM',
         center: mapTarget,
-        zoom: 15
+        zoom: 15,
+       mapTypeId: Microsoft.Maps.MapTypeId.canvasDark,
+        customMapStyle: {
+            elements: {
+                street: {
+                    fillColor: '#BFAEAC',
+                },
+                water: {
+                    fillColor: '#4D76B2'
+                },
+                highway: {
+                    fillColor: '#8FA9CC'
+                },
+                road: {
+                    fillColor: '#403F4C',
+                    strokeColor: '#ccc'
+                },
+                vegetation: {
+                    fillColor: '#6C7F2A'
+                },
+                mapElement: {
+                    labelColor: '#fff',
+                    labelOutlineColor: '#666'
+                }
+            },
+            settings: {
+                landColor: '#51637E'
+             }
+        }
     });
     infobox = new Microsoft.Maps.Infobox(map.getCenter(), {
         visible: false,
     });
     infobox.setMap(map);
-    let pin = new Microsoft.Maps.Pushpin(mapTarget, { title: 'You are Here' })
+    let pin = new Microsoft.Maps.Pushpin(mapTarget, { title: 'You are Here', color: 'red', draggable: true})
     map.entities.push(pin);
     Microsoft.Maps.loadModule('Microsoft.Maps.Traffic', function () {
         trafficManager = new Microsoft.Maps.Traffic.TrafficManager(map);
         trafficManager.show();
     });
 }
-
 
 const ppClicked = (e) => {
     let url = `https://api.foursquare.com/v2/venues/${e.target.metadata.venueID}?client_id=VSKZRJ3CZT5J0WQK2AEAPSP254O4SJAUEE1WVASQSY4NCSBR&client_secret=OTQKUUM5KKMFALEKGS3RYRZUD1OGRIC0GV4YCDTCI3KWOSLR&v=20190307`
@@ -47,11 +74,10 @@ const ppClicked = (e) => {
             hours += `<tr><td>${e.days}</td><td>${e.open[0].renderedTime}</td><tr>`
         });
         hours += '</table>';
-        let venueLocation = new Microsoft.Maps.Location(response.response.venue.location.lat,response.response.venue.location.lng);
+        let venueLocation = new Microsoft.Maps.Location(response.response.venue.location.lat, response.response.venue.location.lng);
         map.setView({
             center: venueLocation
         })
-        //let infoboxTemplate = '<div class="infobox"><div class="title">{title}</div>{description}</div>';
         let title = e.target.metadata.title;
         let description = `<div><img src="${photoURL}" alt="${e.target.metadata.title} photo"/></div> ${hours}`;
         infobox.setOptions({
@@ -60,10 +86,9 @@ const ppClicked = (e) => {
             maxWidth: 400,
             maxHeight: 600,
             description: description,
-            //htmlContent: infoboxTemplate.replace('{title}', title).replace('{description}', description),
             visible: true
         })
-        $('.infobox-body').attr('style','width: auto;');
+        $('.infobox-body').attr('style', 'width: auto;');
     })
 }
 
@@ -75,11 +100,11 @@ const search = query => {
             let ll = llarr.toString().replace(',', '%2C');
             getPlaces(ll).then(response => {//replace with call to updated places UI
                 response.response.groups[0].items.forEach(e => {
-                    $('#stuff').append(`<div><a href="https://www.google.com/maps/search/?api=1&query=${e.venue.location.lat + '%2C' + e.venue.location.lng}" target="_blank">${e.venue.name}</a></div>`)
+                    $('#stuff').append(`<div><a href="https://www.google.com/maps/search/?api=1&query=${e.venue.location.lat + '%2C' + e.venue.location.lng}" target="_blank">${e.venue.name}</a><span class="info"></span></div>`)
                     let place = new Microsoft.Maps.Location(e.venue.location.lat, e.venue.location.lng);
                     let pin = new Microsoft.Maps.Pushpin(place, {
                         title: e.venue.name,
-                        icon: e.venue.categories[0].icon.prefix + 'bg_32' + e.venue.categories[0].icon.suffix,
+                        icon: e.venue.categories[0].icon.prefix + '32' + e.venue.categories[0].icon.suffix
                     });
                     pin.metadata = {
                         title: e.venue.name,
