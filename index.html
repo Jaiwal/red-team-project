@@ -1,42 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel = "stylesheet" type = "text/css" href="assets/css/bootstrap.css">
-    <link rel = "stylesheet" type =  "text/css" href="assets/css/styles.css">
-    <title>Project Red</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type='text/javascript'
+    src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Ao5GBZzTBhN_P14V5wnkRm5gX7oxMjW47tpMlDtE_qVc16qRn7ElPOlM3IxfzPQM'
+    async defer></script>
+  <script src="./assets/scripts/places.js" defer></script>
+  <title>Project Red</title>
 </head>
+
 <body>
-    <div class = "container">
-    <div class="jumbotron w-75 h-35">
-        <h1 class="display-4">Hello, world!</h1>
-            <div class="catagory-selector">
-        <input id="food" type="radio" name="catagories" value="food" />
-        <label class="drinkcard food" for="food"></label>
+  <!-- <div class="container"> -->
+    <div class="jumbotron fluid">
+      <h1 class="display-4">Hello, world!</h1>
+      <div class="catagory-selector">
+        <form id="search">
+          <input id="food" type="radio" name="categories" value="food" />
+          <label class="drinkcard food" for="food"></label>
 
-        <input id="drinks" type="radio" name="catagories" value="drinks" />
-        <label class="drinkcard drinks"for="drinks"></label>
+          <input id="drinks" type="radio" name="categories" value="drinks" />
+          <label class="drinkcard drinks" for="drinks"></label>
 
-        <input id="arts" type="radio" name="catagories" value="arts" />
-        <label class="drinkcard arts" for="arts"></label>
+          <input id="arts" type="radio" name="categories" value="arts" />
+          <label class="drinkcard arts" for="arts"></label>
 
-        <input id="outdoor" type="radio" name="catagories" value="drinks" />
-        <label class="drinkcard outdoor"for="outdoor"></label>
-    </div>
-
-
-        
-  <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Where to search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-              <button class="btn btn-info" type="button">Search</button>
-            </div>
-          </div>
+          <input id="outdoor" type="radio" name="categories" value="outdoors" />
+          <label class="drinkcard outdoor" for="outdoor"></label>
+      </div>
+      <div class="input-group mb-3">
+        <button class="btn btn-info" type="button" id="locate">&#8982;</button>
+        <input type="text" id="locationsearch" class="form-control" placeholder="Where to search...">
+        <div class="input-group-append">
+          <button class="btn btn-info" type="submit">Search</button>
+          </form>
+        </div>
       </div>
     </div>
+<!-- </div> -->
 
 </body>
+
 </html>
