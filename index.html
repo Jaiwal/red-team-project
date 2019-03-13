@@ -4,11 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel = "stylesheet" type = "text/css" href="assets/css/bootstrap.css">
+    <link rel = "stylesheet" type =  "text/css" href="assets/css/styles.css">
     <title>Project Red</title>
     <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="weather.js"></script>
 </head>
 <body>
-    
+    <div class = "container">
+    <div class="jumbotron w-75 h-35">
+        <h1 class="display-4">Hello, world!</h1>
+            <div class="catagory-selector">
+              <input id="food" type="radio" name="catagories" value="food" />
+              <label class="drinkcard food" for="food"></label>
+
+              <input id="drinks" type="radio" name="catagories" value="drinks" />
+              <label class="drinkcard drinks"for="drinks"></label>
+
+              <input id="arts" type="radio" name="catagories" value="arts" />
+              <label class="drinkcard arts" for="arts"></label>
+
+              <input id="outdoor" type="radio" name="catagories" value="drinks" />
+              <label class="drinkcard outdoor"for="outdoor"></label>
+            </div>
+            <!-- <small><a href="https://github.com/rcotrina94/icons"> -->
+              <!-- &copy; Icons by @rcotrina94 on Github</a></small> -->
+
+
+        
+  <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Where to search..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <button class="btn btn-info" type="button">Search</button>
+            </div>
+          </div>
+      </div>
+    </div>
+
 </body>
 </html>

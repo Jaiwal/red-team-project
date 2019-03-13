@@ -1,0 +1,54 @@
+body {
+    background: aquamarine;
+
+}
+
+.jumbotron {
+    background-image: url(../images/beachfront.jpeg);
+    background-size: cover;
+    padding: 20% 10%;
+    margin: 1em .5em;   
+}
+
+/* Radio Button CSS */
+
+.catagory-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+.food{background-image:url(../images/food.png);}
+.drinks{background-image:url(../images/drinks.png);}
+.arts{background-image:url(../images/arts.png);}
+.outdoor{background-image:url(../images/outdoor.png);}
+
+.catagory-selector input:active +.drinkcard{opacity: .9;}
+.catagory-selector input:checked +.drinkcard{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+.drinkcard{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;height:70px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+/* Extras */
+a:visited{color:#888}
+a{color:#444;text-decoration:none;}
+p{margin-bottom:.3em;}
