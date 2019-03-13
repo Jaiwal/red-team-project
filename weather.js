@@ -7,10 +7,9 @@ $(document).ready(function () {
     var longitude = -122.681427;
     
     // Here we are building the URL we need to query the database
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon="+longitude+"&appid="+APIKey;
+    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?lat="+latitude+"&lon="+longitude+"&appid="+APIKey;
 
-
-    // Here we run our AJAX call to the OpenWeatherMap API
+    // Here we run our AJAX call to the OpenWeatherMap API    
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -18,7 +17,15 @@ $(document).ready(function () {
       .then(function(response) {
         console.log(queryURL);
         console.log(response);
-
+        
+        function kelvinConverter() {
+          for (var i=0; i < response.list.length; i++) {
+            var kelv = $(response.list[i].main.temp);
+            var fahr = parseFloat(((kelv-273.15)*1.8)+32);
+            console.log(fahr);
+          }
+        }
+        kelvinConverter();
       });
 
     });
