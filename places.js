@@ -25,7 +25,7 @@ const getMap = ll => {
         customMapStyle: {
             elements: {
                 street: {
-                    fillColor: '#BFAEAC',
+                    fillColor: '#8c7b79',
                 },
                 water: {
                     fillColor: '#4D76B2'
