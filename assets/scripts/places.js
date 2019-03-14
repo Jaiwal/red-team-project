@@ -175,14 +175,6 @@ $(document).ready(function () {
             case undefined:
                 $('#nav').css('background-image', 'url(assets/images/beachfront.jpeg)');
         }
-        const preload = pictures => {
-            let images = [];
-            pictures.forEach((e, i) => {
-                images[i] = new Image();
-                images[i].src = e;
-            })
-        }
-        preload(['assets/images/foodbg.jpg','assets/images/drinksbg.jpeg','assets/images/park.jpeg','assets/images/artsbg.jpeg'])
     })
 })
 

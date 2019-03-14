@@ -1,5 +1,9 @@
 .jumbotron {
-    background-image: url(../images/beachfront.jpeg);
+    background-image: url(../images/beachfront.jpeg),
+                      url(assets/images/foodbg.jpg),
+                      url(assets/images/drinksbg.jpeg),
+                      url(assets/images/artsbg.jpeg),
+                      url(assets/images/park.jpeg);
     background-size: cover;
     padding: 20% 10%;
     margin: 0; 
