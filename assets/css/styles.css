@@ -1,9 +1,9 @@
 .jumbotron {
     background-image: url(../images/beachfront.jpeg),
-                      url(assets/images/foodbg.jpg),
-                      url(assets/images/drinksbg.jpeg),
-                      url(assets/images/artsbg.jpeg),
-                      url(assets/images/park.jpeg);
+                      url(../images/foodbg.jpg),
+                      url(../images/drinksbg.jpeg),
+                      url(../images/artsbg.jpeg),
+                      url(../images/park.jpeg);
     background-size: cover;
     padding: 20% 10%;
     margin: 0; 
