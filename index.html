@@ -11,7 +11,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script type='text/javascript'
-    src='http://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Ao5GBZzTBhN_P14V5wnkRm5gX7oxMjW47tpMlDtE_qVc16qRn7ElPOlM3IxfzPQM'
+    src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Ao5GBZzTBhN_P14V5wnkRm5gX7oxMjW47tpMlDtE_qVc16qRn7ElPOlM3IxfzPQM'
     async defer></script>
   <script src="./assets/scripts/places.js" defer></script>
   <title>Project Red</title>
@@ -33,7 +33,8 @@
     </div>
     <div class="input-group mb-3">
       <button class="btn btn-info" type="button" id="locate"><i class="fas fa-map-marker-alt"></i></button>
-      <input type="text" id="locationsearch" class="form-control" placeholder="Where to search...">
+      <input type="text" id="locationsearch" class="form-control" placeholder="Where to search..." required oninvalid="this.setCustomValidity('Oops, please enter a location or use your current location')" 
+      onchange="this.setCustomValidity('')">
       <div class="input-group-append">
         <button class="btn btn-info" type="submit">Search</button>
         </form>
