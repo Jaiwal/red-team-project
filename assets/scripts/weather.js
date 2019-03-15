@@ -2,7 +2,7 @@ function weatherSearch(latitude, longitude) {
   var APIKey = "166a433c57516f51dfab1f7edaed8413";
 
   // Here we are building the URL we need to query the database
-  var queryURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey;
+  var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey;
   var weatherIcon = {
     "Thunderstorm": "fas fa-bolt",
     "Drizzle": "fas fa-cloud-rain",
