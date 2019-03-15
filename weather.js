@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // function weatherSearch (latitude, longitude) {
+    function weatherSearch (latitude, longitude) {
       var APIKey = "166a433c57516f51dfab1f7edaed8413";
 
       // Coordinates for PDX for testing
@@ -18,44 +18,47 @@ $(document).ready(function () {
           console.log(queryURL);
           console.log(response);
           
+          // Function to convert from Kelvin to Fahrenheit and post it
           function kelvinConverter() {
-            for (var i=0; i < 5; i++) {
-              var kelv = response.list[i].main.temp;
-              var fahr = parseInt(((kelv-273.15)*1.8)+32);
-              console.log(fahr);
-              var weatherTempNow = kelv[0];
-              $("#weatherTempNow").append(weatherTempNow);
-              // var weatherTemp3 = kelv[1];
-              // $("#weatherTemp3").append(weatherTemp3);
-              // var weatherTemp6 = kelv[2];
-              // $("#weatherTemp6").append(weatherTemp6);
-              // var weatherTemp9 = kelv[3];
-              // $("#weatherTemp9").append(weatherTemp9);
-              // var weatherTemp12 = kelv[4];
-              // $("#weatherTemp12").append(weatherTemp12);
-            }
+              var weatherTempNow = parseInt(((response.list[0].main.temp-273.15)*1.8)+32);
+              $("#weatherTempNow").prepend(weatherTempNow);
+              var weatherTemp3 = parseInt(((response.list[1].main.temp-273.15)*1.8)+32);
+              $("#weatherTemp3").prepend(weatherTemp3);
+              var weatherTemp6 = parseInt(((response.list[2].main.temp-273.15)*1.8)+32);
+              $("#weatherTemp6").prepend(weatherTemp6);
+              var weatherTemp9 = parseInt(((response.list[3].main.temp-273.15)*1.8)+32);
+              $("#weatherTemp9").prepend(weatherTemp9);
+              var weatherTemp12 = parseInt(((response.list[4].main.temp-273.15)*1.8)+32);
+              $("#weatherTemp12").prepend(weatherTemp12);
           }
           
-          
+          // Function to pull the type of weather and post it
           function getWeatherType() {
+              var weatherNow = response.list[0].weather[0].main;
+              $("#weatherNow").append(weatherNow);
+              var weather3 = response.list[1].weather[0].main;
+              $("#weather3").append(weather3);
+              var weather6 = response.list[2].weather[0].main;
+              $("#weather6").append(weather6);
+              var weather9 = response.list[3].weather[0].main;
+              $("#weather9").append(weather9);
+              var weather12 = response.list[4].weather[0].main;
+              $("#weather12").append(weather12);           
+          }
+
+          function consoleViewing() {
             for (var i=0; i < 5; i++) {
               var weatherTypeArray = response.list[i].weather[0].main;
               console.log(weatherTypeArray);
-              var weatherNow = weatherTypeArray[0];
-              $("#weatherNow").append(weatherNow);
-              // var weather3 = weatherTypeArray[1];
-              // $("#weather3").append(weather3);
-              // var weather6 = weatherTypeArray[2];
-              // $("#weather6").append(weather6);
-              // var weather9 = weatherTypeArray[3];
-              // $("#weather9").append(weather9);
-              // var weather12 = weatherTypeArray[4];
-              // $("#weather12").append(weather12);
+              var fahr = parseInt(((response.list[i].main.temp-273.15)*1.8)+32);
+              console.log(fahr);
             }
           }
+
           kelvinConverter();
           getWeatherType();
+          consoleViewing();
         });
-      // }
+      }
 
     });
