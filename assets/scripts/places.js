@@ -54,6 +54,7 @@ $(document).ready(function () {
             } catch (e) {
                 hours = 'Hours not available'
             }
+            let address = `<div class="text-center"><p>${response.response.venue.location.formattedAddress[0]}</p><p>${response.response.venue.location.formattedAddress[1]}</p></div>`
             infoboxTemplate = '<div class="infobox"><div class="title">{title}<a class="infobox-close" href="javascript:void(0)"><img class="infobox-close-img" id="closebtn" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE0cHgiIHdpZHRoPSIxNHB4IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiPjxwYXRoIGQ9Ik03LDBDMy4xMzQsMCwwLDMuMTM0LDAsN2MwLDMuODY3LDMuMTM0LDcsNyw3YzMuODY3LDAsNy0zLjEzMyw3LTdDMTQsMy4xMzQsMTAuODY3LDAsNywweiBNMTAuNSw5LjVsLTEsMUw3LDhsLTIuNSwyLjVsLTEtMUw2LDdMMy41LDQuNWwxLTFMNyw2bDIuNS0yLjVsMSwxTDgsN0wxMC41LDkuNXoiLz48L3N2Zz4=" alt="close infobox"></a></div>{description}</div>';
             let venueLocation = new Microsoft.Maps.Location(response.response.venue.location.lat, response.response.venue.location.lng);
             map.setView({
@@ -61,7 +62,7 @@ $(document).ready(function () {
             })
             let corner = map.tryPixelToLocation(0, 0);
             let title = name;
-            let description = `<div><img src="${photoURL}" alt="${name} photo"/></div> ${hours}`;
+            let description = `<div><img src="${photoURL}" alt="${name} photo"/></div> ${hours}${address}`;
             infobox.setOptions({
                 location: corner,
                 title: title,
@@ -83,13 +84,13 @@ $(document).ready(function () {
     }
 
     const updateUI = () => {
-        $('h1').remove();
         $('.jumbotron').attr('class', 'navbar');
+        $('.navgroup').attr('class','navgroup-row');
         $('#weather').remove();
         $('#results').remove();
-        $('body').append('<div class="row" id="weather">');
-        $('body').append('<div class="row no-gutters" id="results">');
+        $('.wrapper').append('<div class="row no-gutters" id="results">');
         $('#results').append('<div class="col-12 col-sm-4" id="leftcol"><ul class="list-group"></div><div class="col-12 col-sm-8"><div id="map"></div></div>')
+        $('.wrapper').append('<div class="row no-gutters" id="weather">');
     }
 
     const search = (query, section) => {
@@ -99,6 +100,7 @@ $(document).ready(function () {
                 let llarr = response.resourceSets[0].resources[0].geocodePoints[0].coordinates;
                 let ll = llarr.toString().replace(',', '%2C');
                 getMap(llarr);
+                weatherSearch(llarr[0],llarr[1]);
                 getPlaces(ll, section).then(response => {
                     let layer = new Microsoft.Maps.Layer();
                     let pins = [];
@@ -161,19 +163,19 @@ $(document).ready(function () {
         let activeSel = $('input[name="categories"]:checked').val();
         switch (activeSel) {
             case 'food':
-                $('#nav').css('background-image', 'url(assets/images/foodbg.jpg)');
+                $('body').css('background-image', 'url(assets/images/foodbg.jpg)');
                 break;
             case 'drinks':
-                $('#nav').css('background-image', 'url(assets/images/drinksbg.jpeg)');
+                $('body').css('background-image', 'url(assets/images/drinksbg.jpeg)');
                 break;
             case 'arts':
-                $('#nav').css('background-image', 'url(assets/images/artsbg.jpeg)');
+                $('body').css('background-image', 'url(assets/images/artsbg.jpeg)');
                 break;
             case 'outdoors':
-                $('#nav').css('background-image', 'url(assets/images/park.jpeg)');
+                $('body').css('background-image', 'url(assets/images/park.jpeg)');
                 break;
             case undefined:
-                $('#nav').css('background-image', 'url(assets/images/beachfront.jpeg)');
+                $('body').css('background-image', 'url(assets/images/beachfront.jpeg)');
         }
     })
 })

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 
 <head>
   <meta charset="UTF-8">
@@ -14,34 +16,39 @@
     src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=Ao5GBZzTBhN_P14V5wnkRm5gX7oxMjW47tpMlDtE_qVc16qRn7ElPOlM3IxfzPQM'
     async defer></script>
   <script src="./assets/scripts/places.js" defer></script>
-  <title>Project Red</title>
+  <script src="./assets/scripts/weather.js"></script>
+  <title>//doSomething</title>
 </head>
 
 <body>
-  <div class="jumbotron fluid" id="nav">
-    <h1 class="display-4">Hello, world!</h1>
-    <div class="category-selector">
-      <form id="search">
-        <input id="food" type="radio" name="categories" value="food" />
-        <label class="drinkcard food" for="food"></label>
-        <input id="drinks" type="radio" name="categories" value="drinks" />
-        <label class="drinkcard drinks" for="drinks"></label>
-        <input id="arts" type="radio" name="categories" value="arts" />
-        <label class="drinkcard arts" for="arts"></label>
-        <input id="outdoor" type="radio" name="categories" value="outdoors" />
-        <label class="drinkcard outdoor" for="outdoor"></label>
-    </div>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <button class="btn btn-info" type="button" id="locate"><i class="fas fa-map-marker-alt"></i></button>
+  <div class="wrapper">
+    <div class="jumbotron fluid" id="nav">
+      <div class="navgroup">
+        <h1 class="display-4 d-none d-md-block">//doSomething</h1>
+        <div class="category-selector">
+          <form id="search">
+            <input id="food" type="radio" name="categories" value="food" />
+            <label class="drinkcard food" for="food"></label>
+            <input id="drinks" type="radio" name="categories" value="drinks" />
+            <label class="drinkcard drinks" for="drinks"></label>
+            <input id="arts" type="radio" name="categories" value="arts" />
+            <label class="drinkcard arts" for="arts"></label>
+            <input id="outdoor" type="radio" name="categories" value="outdoors" />
+            <label class="drinkcard outdoor" for="outdoor"></label>
+        </div>
       </div>
-      <input type="text" id="locationsearch" class="form-control" placeholder="Where to search..." required
-        oninvalid="this.setCustomValidity('Oops, please enter a location or use your current location')"
-        onchange="this.setCustomValidity('')">
-      <div class="input-group-append">
-        <button class="btn btn-info" type="submit">Search</button>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-info" type="button" id="locate"><i class="fas fa-map-marker-alt"></i></button>
+        </div>
+        <input type="text" id="locationsearch" class="form-control" placeholder="Where to search..." required
+          oninvalid="this.setCustomValidity('Oops, please enter a location or use your current location')"
+          onchange="this.setCustomValidity('')">
+        <div class="input-group-append">
+          <button class="btn btn-info" type="submit">Search</button>
+        </div>
+        </form>
       </div>
-      </form>
     </div>
   </div>
 </body>

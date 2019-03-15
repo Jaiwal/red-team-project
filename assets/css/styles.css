@@ -1,18 +1,27 @@
-.jumbotron {
+body {
     background-image: url(../images/beachfront.jpeg),
                       url(../images/foodbg.jpg),
                       url(../images/drinksbg.jpeg),
                       url(../images/artsbg.jpeg),
                       url(../images/park.jpeg);
     background-size: cover;
+    transition-duration: 300ms;
+}
+html, body, .wrapper {
+    min-height: 100vh;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.jumbotron {
+    background: transparent;
     padding: 20% 10%;
     margin: 0; 
     min-height: 100vh;
-
 }
 .navbar {
-    background-image: url(../images/beachfront.jpeg);
-    background-size: cover;
+    background: transparent;
 }
 
 /* Radio Button CSS */
@@ -28,8 +37,8 @@
 .arts{background-image:url(../images/arts.png);}
 .outdoor{background-image:url(../images/outdoor.png);}
 
-.catagory-selector input:active +.drinkcard{opacity: .9;}
-.catagory-selector input:checked +.drinkcard{
+.category-selector input:active +.drinkcard{opacity: .9;}
+.category-selector input:checked +.drinkcard{
     -webkit-filter: none;
        -moz-filter: none;
             filter: none;
@@ -86,8 +95,12 @@ input[type="radio"] {
 }
 h1 {
     background-color: rgba(255,255,255,.8);
-    width: 30%;
+    width: 35%;
+    padding: 8px;
     text-align: center;
+    margin: 8px 0;
+    border-radius: 10px;
+    align-self: center;
 }
 .infobox {
     width: 300px;
@@ -109,12 +122,32 @@ table {
 td {
     padding: 2px 10px;
 }
-@media screen and (max-width: 450px) {
+#weather {
+    text-align: center;
+    background: rgba(255,255,255,.8);
+    flex: 1 1 auto;
+    align-items: center;
+    box-sizing: border-box;
+}
+.navgroup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-content: center;
+}
+.navgroup-row {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+@media screen and (max-width: 768px) {
     .drinkcard {
         width: 50px;
     }
     h1.display-4 {
-        font-size: 2rem;
+        font-size: 1.5rem;
         width: 100%;
         padding: 10px;
     }
