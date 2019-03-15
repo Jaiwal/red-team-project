@@ -29,8 +29,8 @@ body {
 .arts{background-image:url(../images/arts.png);}
 .outdoor{background-image:url(../images/outdoor.png);}
 
-.catagory-selector input:active +.drinkcard{opacity: .9;}
-.catagory-selector input:checked +.drinkcard{
+.category-selector input:active +.drinkcard{opacity: .9;}
+.category-selector input:checked +.drinkcard{
     -webkit-filter: none;
        -moz-filter: none;
             filter: none;
