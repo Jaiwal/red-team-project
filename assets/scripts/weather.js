@@ -4,13 +4,13 @@ function weatherSearch(latitude, longitude) {
   // Here we are building the URL we need to query the database
   var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey;
   var weatherIcon = {
-    "Thunderstorm": "fas fa-bolt",
-    "Drizzle": "fas fa-cloud-rain",
-     "Rain": "fas fa-cloud-showers-heavy",
-     "Snow": "fas fa-snowflake",
-     "Atmosphere": "fas fa-smog",
-     "Clear": "fas fa-sun",
-     "Clouds": "fas fa-cloud-sun"
+    "Thunderstorm": "fas fa-bolt weathericon",
+    "Drizzle": "fas fa-cloud-rain weathericon",
+     "Rain": "fas fa-cloud-showers-heavy weathericon",
+     "Snow": "fas fa-snowflake weathericon",
+     "Atmosphere": "fas fa-smog weathericon",
+     "Clear": "fas fa-sun weathericon",
+     "Clouds": "fas fa-cloud-sun weathericon"
   }
   // Here we run our AJAX call to the OpenWeatherMap API    
   $.ajax({

@@ -1,7 +1,7 @@
 $(document).ready(function () {
     let map, infobox
     const getPlaces = (location, section = 'topPicks') => {
-        const fourSquareURL = 'https://api.foursquare.com/v2/venues/explore?limit=12&v=20190307&client_id=VSKZRJ3CZT5J0WQK2AEAPSP254O4SJAUEE1WVASQSY4NCSBR&client_secret=OTQKUUM5KKMFALEKGS3RYRZUD1OGRIC0GV4YCDTCI3KWOSLR&ll=';
+        const fourSquareURL = 'https://api.foursquare.com/v2/venues/explore?limit=13&v=20190307&client_id=VSKZRJ3CZT5J0WQK2AEAPSP254O4SJAUEE1WVASQSY4NCSBR&client_secret=OTQKUUM5KKMFALEKGS3RYRZUD1OGRIC0GV4YCDTCI3KWOSLR&ll=';
         return $.ajax({
             url: fourSquareURL + location + '&section=' + section,
             method: 'GET'
