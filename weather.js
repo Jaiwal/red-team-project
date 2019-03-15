@@ -23,14 +23,34 @@ $(document).ready(function () {
               var kelv = response.list[i].main.temp;
               var fahr = parseInt(((kelv-273.15)*1.8)+32);
               console.log(fahr);
+              var weatherTempNow = kelv[0];
+              $("#weatherTempNow").append(weatherTempNow);
+              // var weatherTemp3 = kelv[1];
+              // $("#weatherTemp3").append(weatherTemp3);
+              // var weatherTemp6 = kelv[2];
+              // $("#weatherTemp6").append(weatherTemp6);
+              // var weatherTemp9 = kelv[3];
+              // $("#weatherTemp9").append(weatherTemp9);
+              // var weatherTemp12 = kelv[4];
+              // $("#weatherTemp12").append(weatherTemp12);
             }
           }
           
+          
           function getWeatherType() {
             for (var i=0; i < 5; i++) {
-              var weatherType = response.list[i].weather[0].main;
-              console.log(weatherType);
-              $().append(weatherType);
+              var weatherTypeArray = response.list[i].weather[0].main;
+              console.log(weatherTypeArray);
+              var weatherNow = weatherTypeArray[0];
+              $("#weatherNow").append(weatherNow);
+              // var weather3 = weatherTypeArray[1];
+              // $("#weather3").append(weather3);
+              // var weather6 = weatherTypeArray[2];
+              // $("#weather6").append(weather6);
+              // var weather9 = weatherTypeArray[3];
+              // $("#weather9").append(weather9);
+              // var weather12 = weatherTypeArray[4];
+              // $("#weather12").append(weather12);
             }
           }
           kelvinConverter();
