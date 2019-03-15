@@ -54,21 +54,30 @@ $(document).ready(function () {
             } catch (e) {
                 hours = 'Hours not available'
             }
-
+            infoboxTemplate = '<div class="infobox"><div class="title">{title}<a class="infobox-close" href="javascript:void(0)"><img class="infobox-close-img" id="closebtn" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE0cHgiIHdpZHRoPSIxNHB4IiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiPjxwYXRoIGQ9Ik03LDBDMy4xMzQsMCwwLDMuMTM0LDAsN2MwLDMuODY3LDMuMTM0LDcsNyw3YzMuODY3LDAsNy0zLjEzMyw3LTdDMTQsMy4xMzQsMTAuODY3LDAsNywweiBNMTAuNSw5LjVsLTEsMUw3LDhsLTIuNSwyLjVsLTEtMUw2LDdMMy41LDQuNWwxLTFMNyw2bDIuNS0yLjVsMSwxTDgsN0wxMC41LDkuNXoiLz48L3N2Zz4=" alt="close infobox"></a></div>{description}</div>';
             let venueLocation = new Microsoft.Maps.Location(response.response.venue.location.lat, response.response.venue.location.lng);
             map.setView({
                 center: venueLocation
             })
+            let corner = map.tryPixelToLocation(0, 0);
             let title = name;
             let description = `<div><img src="${photoURL}" alt="${name} photo"/></div> ${hours}`;
             infobox.setOptions({
-                location: venueLocation,
+                location: corner,
                 title: title,
                 maxWidth: 400,
                 maxHeight: 600,
                 description: description,
-                visible: true
-            })
+                visible: true,
+                htmlContent: infoboxTemplate.replace('{title}', name).replace('{description}', description)
+            });
+            Microsoft.Maps.Events.addHandler(infobox, 'click', function (e) {
+                if (!e.originalEvent.target.attributes[1]) {
+                    return;
+                } else if (e.originalEvent.target.attributes[1].nodeValue === 'closebtn') {
+                    infobox.setOptions({ visible: false })
+                }
+            });
             $('.infobox-body').attr('style', 'width: auto;');
         })
     }
@@ -80,7 +89,7 @@ $(document).ready(function () {
         $('#results').remove();
         $('body').append('<div class="row" id="weather">');
         $('body').append('<div class="row no-gutters" id="results">');
-        $('#results').append('<div class="col-4" id="leftcol"><ul class="list-group"></div><div class="col-8"><div id="map"></div></div>')
+        $('#results').append('<div class="col-12 col-sm-4" id="leftcol"><ul class="list-group"></div><div class="col-12 col-sm-8"><div id="map"></div></div>')
     }
 
     const search = (query, section) => {
@@ -105,7 +114,6 @@ $(document).ready(function () {
                             title: e.venue.name,
                             icon: e.venue.categories[0].icon.prefix + '32' + e.venue.categories[0].icon.suffix
                         });
-
                         pin.metadata = {
                             title: e.venue.name,
                             venueID: e.venue.id
