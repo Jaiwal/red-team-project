@@ -3,7 +3,15 @@ function weatherSearch(latitude, longitude) {
 
   // Here we are building the URL we need to query the database
   var queryURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + latitude + "&lon=" + longitude + "&appid=" + APIKey;
-
+  var weatherIcon = {
+    "Thunderstorm": "fas fa-bolt",
+    "Drizzle": "fas fa-cloud-rain",
+     "Rain": "fas fa-cloud-showers-heavy",
+     "Snow": "fas fa-snowflake",
+     "Atmosphere": "fas fa-smog",
+     "Clear": "fas fa-sun",
+     "Clouds": "fas fa-cloud-sun"
+  }
   // Here we run our AJAX call to the OpenWeatherMap API    
   $.ajax({
     url: queryURL,
@@ -28,15 +36,15 @@ function weatherSearch(latitude, longitude) {
       // Function to pull the type of weather and post it
       function getWeatherType() {
         var weatherNow = response.list[0].weather[0].main;
-        $('#weather').append(`<div class="col col-md-1 mx-auto weatherbox"><h6>Now</h6><div id="weatherNow">${weatherNow}</div><h3 id="weatherTempNow">&#8457</h3></div>`);
+        $('#weather').append(`<div class="col col-md-1 mx-auto weatherbox"><h6>Now</h6><div id="weatherNow"><i class="${weatherIcon[weatherNow]}"></i></div><h3 id="weatherTempNow">&#8457</h3></div>`);
         var weather3 = response.list[1].weather[0].main;
-        $('#weather').append(`<div class="col col-md-1 mx-auto weatherbox"><h6>3 hours</h6><div id="weather3">${weather3}</div><h3 id="weatherTemp3">&#8457</h3></div>`);
+        $('#weather').append(`<div class="col col-md-1 mx-auto weatherbox"><h6>3 hours</h6><div id="weather3"><i class="${weatherIcon[weather3]}"></i></div><h3 id="weatherTemp3">&#8457</h3></div>`);
         var weather6 = response.list[2].weather[0].main;
-        $('#weather').append(`<div class="col col-md-1 mx-auto weatherbox"><h6>6 hours</h6><div id="weather6">${weather6}</div><h3 id="weatherTemp6">&#8457</h3></div>`);
+        $('#weather').append(`<div class="col col-md-1 mx-auto weatherbox"><h6>6 hours</h6><div id="weather6"><i class="${weatherIcon[weather6]}"></i></div><h3 id="weatherTemp6">&#8457</h3></div>`);
         var weather9 = response.list[3].weather[0].main;
-        $('#weather').append(`<div class="col col-md-1 mx-auto weatherbox"><h6>9 hours</h6><div id="weather9">${weather9}</div><h3 id="weatherTemp9">&#8457</h3></div>`);
+        $('#weather').append(`<div class="col col-md-1 mx-auto weatherbox"><h6>9 hours</h6><div id="weather9"><i class="${weatherIcon[weather9]}"></i></div><h3 id="weatherTemp9">&#8457</h3></div>`);
         var weather12 = response.list[4].weather[0].main;
-        $('#weather').append(`<div class="col col-md-1 mx-auto weatherbox"><h6>12 hours</h6><div id="weather12">${weather12}</div><h3 id="weatherTemp12">&#8457</h3></div>`);
+        $('#weather').append(`<div class="col col-md-1 mx-auto weatherbox"><h6>12 hours</h6><div id="weather12"><i class="${weatherIcon[weather12]}"></i></div><h3 id="weatherTemp12">&#8457</h3></div>`);
 
       }
 

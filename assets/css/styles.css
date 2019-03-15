@@ -5,6 +5,14 @@ body {
                       url(../images/artsbg.jpeg),
                       url(../images/park.jpeg);
     background-size: cover;
+    transition-duration: 300ms;
+}
+html, body, .wrapper {
+    min-height: 100vh;
+}
+.wrapper {
+    display: flex;
+    flex-direction: column;
 }
 .jumbotron {
     background: transparent;
@@ -88,9 +96,9 @@ input[type="radio"] {
 h1 {
     background-color: rgba(255,255,255,.8);
     width: 35%;
-    padding: 10px;
+    padding: 8px;
     text-align: center;
-    margin: 10px 0;
+    margin: 8px 0;
     border-radius: 10px;
     align-self: center;
 }
@@ -116,7 +124,10 @@ td {
 }
 #weather {
     text-align: center;
-    background: rgba(255,255,255,.8)
+    background: rgba(255,255,255,.8);
+    flex: 1 1 auto;
+    align-items: center;
+    box-sizing: border-box;
 }
 .navgroup {
     display: flex;
@@ -131,12 +142,12 @@ td {
     justify-content: space-between;
     align-items: center;
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 768px) {
     .drinkcard {
         width: 50px;
     }
     h1.display-4 {
-        font-size: 2rem;
+        font-size: 1.5rem;
         width: 100%;
         padding: 10px;
     }

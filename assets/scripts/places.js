@@ -88,9 +88,9 @@ $(document).ready(function () {
         $('.navgroup').attr('class','navgroup-row');
         $('#weather').remove();
         $('#results').remove();
-        $('body').append('<div class="row no-gutters" id="results">');
+        $('.wrapper').append('<div class="row no-gutters" id="results">');
         $('#results').append('<div class="col-12 col-sm-4" id="leftcol"><ul class="list-group"></div><div class="col-12 col-sm-8"><div id="map"></div></div>')
-        $('body').append('<div class="row" id="weather">');
+        $('.wrapper').append('<div class="row no-gutters" id="weather">');
     }
 
     const search = (query, section) => {
