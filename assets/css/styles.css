@@ -96,6 +96,7 @@ input[type="radio"] {
 h1 {
     background-color: rgba(255,255,255,.8);
     width: 35%;
+    min-width: 400px;
     padding: 8px;
     text-align: center;
     margin: 8px 0;
@@ -142,14 +143,12 @@ td {
     justify-content: space-between;
     align-items: center;
 }
+.weathericon {
+    font-size: 2em;
+}
 @media screen and (max-width: 768px) {
     .drinkcard {
         width: 50px;
-    }
-    h1.display-4 {
-        font-size: 1.5rem;
-        width: 100%;
-        padding: 10px;
     }
     form {
         width: 100%;
